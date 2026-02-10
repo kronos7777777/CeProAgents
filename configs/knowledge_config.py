@@ -17,9 +17,10 @@ WRITE_NEO4J = False
 # Path to Neo4j config yaml. 
 # Leave empty "" to rely on internal default paths or disable if not found.
 NEO4J_CONFIG = {
-    "uri": "neo4j+s://18a7ff9a.databases.neo4j.io",
+    
+    "uri": " ",
     "user": "neo4j",
-    "password": "OthDZuaWLSgOIxrbXeI9URHJHZmAef9TwUpy95FFhiM",
+    "password": " ",
     "database": "neo4j",
     "create_constraints": True
 }
