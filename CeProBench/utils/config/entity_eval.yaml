@@ -1,0 +1,41 @@
+# CeProAgents/eval/config/entity_eval.yaml
+
+api_key: sk-ea0zj5MmtqTIstUt7f26A51b120e4b3aA85092Ef445a5aFa
+base_url: https://ai-yyds.com/v1
+max_try_times: 10
+
+model: gpt-5-mini-2025-08-07
+type: kg_entity_eval
+
+temperature: 0.0    
+top_k: 5             
+max_eval: null       
+
+
+system_prompt: |
+  You are an evaluator for knowledge graph entity matching.
+  Given a TARGET entity and a list of CANDIDATE entities, decide which candidates
+  are referring to the SAME real-world entity as the TARGET.
+  Only consider semantic equivalence / aliases / different surface forms.
+  Do NOT mark merely related concepts as matches (e.g., water vs liquid),
+  parent/child categories, processes vs materials, or properties vs entities.
+
+  Your job is to check whether at least one candidate is a true synonym / alias
+  of the target entity.
+
+  Respond STRICTLY in JSON:
+  {"match": true/false, "indices": [list of 1-based indices of matching candidates]}
+
+eval_prompt: |
+  TARGET entity:
+  {target}
+
+  CANDIDATE entities:
+  {candidates}
+
+  Decide whether one or more candidates refer to the SAME real-world entity
+  as the TARGET. Use domain knowledge and common naming conventions if needed,
+  but do not invent mappings beyond standard aliasing.
+
+  Return STRICT JSON ONLY (no explanation, no code fences):
+  {"match": true/false, "indices": [list of 1-based indices of matching candidates]}

@@ -1,0 +1,2 @@
+MAX_ROUND = 20
+SILENT = False
